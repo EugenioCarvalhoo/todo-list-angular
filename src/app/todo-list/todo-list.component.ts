@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
-type IItem = {
+export type IItem = {
   id: number | null
   value: string
   checked: boolean
@@ -12,17 +12,10 @@ type IItem = {
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit {
-
- @ViewChild('editfocus', {static: false}) editFocus!: ElementRef
-  alert: string =  ""
-
+  alert: string = ''
   value: string = ''
-  checked: boolean = false
 
-  @ViewChild('element') element!: any 
-
-
-  @Input() todoItem: IItem[] = [{ id: null, value: 'testando', checked: true, edit: false }, { id: null, value: 'tet', checked: false, edit: false }]
+  @Input("tasks") todoItem: IItem[] = []
   constructor() { }
 
   addItem() {
@@ -39,27 +32,6 @@ export class TodoListComponent implements OnInit {
       this.todoItem.splice(existes, 1)
   }
 
-  // handleChecked(item: IItem) {
-  //   const existes = this.todoItem.indexOf(item)
-  //   if (existes >= 0)
-  //     this.todoItem[existes].checked = !item.checked
-  // }
-
-  // editItem(item: IItem) {
-  //   if (item.checked) {
-      
-  //     this.alertMessage('Não pode editar um item que já foi conclúido!')
-  //     return
-  //   }
-  //   const existes = this.todoItem.indexOf(item)
-  //   if (existes >= 0) {
-  //     item.edit = !item.edit
-  //     this.todoItem[existes] = item
-  //     setTimeout(() => {
-  //       this.editFocus.nativeElement.focus()
-  //     });
-  //   }
-  // }
   private alertMessage (msg: string) {
     this.alert = msg
     const time = setTimeout(() => {
@@ -79,8 +51,8 @@ export class TodoListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    
+   
   }
+ 
 
 }

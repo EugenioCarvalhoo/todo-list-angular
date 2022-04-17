@@ -1,33 +1,14 @@
 <div class="container-list">
     <div class="content-input">
-        <input   class="input" type="text btn-hover" [(ngModel)]="value" (keydown.enter)="addItem()" />
+        <input  placeholder="O que temos que faz?"  class="input" type="text btn-hover" [(ngModel)]="value" (keydown.enter)="addItem()" />
         <app-btn-todo-list label="+ Adicionar" (click)="addItem()"></app-btn-todo-list>
     </div>
     <ul>
-
         <app-row-todo *ngFor="let item of todoItem" [item]="item"
         (exclud)="removeItem(item)" (edit)="editItem($event)" (sendItem)="handleItem($event)">
         </app-row-todo>
-        <!-- <li *ngFor="let item of todoItem">
-            <app-checkbox-todo [checked]="item.checked"  (click)="handleChecked(item)"></app-checkbox-todo>
-            <div class="content-text" >
-                <p *ngIf="!item.edit" class="btn-hover" [ngClass]="{ 'text-checked': item.checked}">{{item.value}}</p>
-                <input  *ngIf="item.edit"  class="input" #editfocus
-                type="text" [(ngModel)]="item.value" (keydown.enter)="editItem(item)">
-            </div>
-            <div>
-                <app-btn-todo-list label="Editar" (click)="editItem(item)">
-                </app-btn-todo-list>
-            </div>
-            <div>
-                <app-btn-todo-list label="Excluir" (click)="removeItem(item)">
-                </app-btn-todo-list>
-            </div>
-        </li> -->
     </ul>
     <div *ngIf="alert.length > 0 " class="alert-error">
-        <p>{{alert}}</p>
+        <p>{{alert}} </p>
     </div>
-
-   <!-- <app-row-todo-list></app-row-todo-list> -->
 </div>

@@ -25,6 +25,9 @@ $font-family: 'Source Sans Pro', sans-serif;
         font-family: $font-family;
 
     }
+    .input::placeholder {
+        color: #BDBDBD;
+    }
     background-color: #FFFFFF;
     box-shadow: 0 0 5px rgba(25,25,25,.25);
     border: $color-main 1px solid;

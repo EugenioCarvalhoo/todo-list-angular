@@ -64,7 +64,7 @@ export class RowTodoListComponent implements OnInit {
   resetItem() {
     this.item.edit = false
   }
-  
+
   ngOnInit(): void {
   }
 
