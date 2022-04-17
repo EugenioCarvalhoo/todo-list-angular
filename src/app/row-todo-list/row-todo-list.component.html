@@ -1,0 +1,16 @@
+<li>
+    <app-checkbox-todo [checked]="item.checked"  (click)="handleChecked()"></app-checkbox-todo>
+    <div class="content-text" >
+        <p *ngIf="!item.edit" class="btn-hover" [ngClass]="{ 'text-checked': item.checked}">{{item.value}}</p>
+        <input  *ngIf="item.edit"  class="input" #editfocus
+        type="text" [(ngModel)]="validateValueItem" (focusout)="resetItem()" (keydown.enter)="editItem()">
+    </div>
+    <div>
+        <app-btn-todo-list [label]="item.edit ? 'Confirmar' : 'Editar'" (click)="editItem()">
+        </app-btn-todo-list>
+    </div>
+    <div>
+        <app-btn-todo-list label="Excluir" (click)="onExclud()">
+        </app-btn-todo-list>
+    </div>
+</li>
