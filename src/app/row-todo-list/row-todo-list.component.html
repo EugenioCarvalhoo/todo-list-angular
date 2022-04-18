@@ -3,10 +3,10 @@
     <div class="content-text" >
         <p *ngIf="!item.edit" class="btn-hover" [ngClass]="{ 'text-checked': item.checked}">{{item.value}}</p>
         <input  *ngIf="item.edit"  class="input" #editfocus
-        type="text" [(ngModel)]="validateValueItem" (focusout)="resetItem()" (keydown.enter)="editItem()">
+        type="text" [(ngModel)]="validateValueItem"  (keydown.enter)="editItem()">
     </div>
     <div>
-        <app-btn-todo-list [label]="item.edit ? 'Confirmar' : 'Editar'" (click)="editItem()">
+        <app-btn-todo-list  #buttonConfirmOredit   [label]="item.edit ? 'Confirmar' : 'Editar'" (click)="editItem()">
         </app-btn-todo-list>
     </div>
     <div>

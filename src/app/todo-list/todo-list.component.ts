@@ -42,6 +42,10 @@ export class TodoListComponent implements OnInit {
   handleItem(item: IItem) {
     const exist = this.todoItem.indexOf(item)
     if (exist>=0) {
+      this.todoItem.forEach(el =>{
+         if(el !== item) {  
+           el.edit = false
+          }})
       this.todoItem[exist] = item
     }
   }
@@ -49,6 +53,7 @@ export class TodoListComponent implements OnInit {
   editItem(event: any) {
     this.alertMessage(event.value)
   }
+
 
   ngOnInit(): void {
    

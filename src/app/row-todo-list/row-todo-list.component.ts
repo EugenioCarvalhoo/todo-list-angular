@@ -5,6 +5,7 @@ type IItem = {
   value: string
   checked: boolean
   edit: boolean
+  
 }
 
 @Component({
@@ -26,6 +27,7 @@ export class RowTodoListComponent implements OnInit {
   @Output() sendItem  = new EventEmitter<IItem>()
 
   validateValueItem: string = ''
+
      
   constructor() { }
 
@@ -37,6 +39,7 @@ export class RowTodoListComponent implements OnInit {
   editItem() {
     if (this.item.edit) {
       this.item.edit = !this.item.edit
+      this.item.value = this.validateValueItem
       if(this.validateValueItem.length === 0)
       this.throwMessage('Campo em branco. Favor definir um valor.')
       return
@@ -50,6 +53,8 @@ export class RowTodoListComponent implements OnInit {
       this.editfocus.nativeElement.focus()
     });
     this.item.edit = !this.item.edit
+    this.sendItem.emit(this.item)
+    
   }
 
   onExclud() {
@@ -59,10 +64,6 @@ export class RowTodoListComponent implements OnInit {
   throwMessage(msg: string) {
     this.edit.emit({value: msg})
 
-  }
-  
-  resetItem() {
-    this.item.edit = false
   }
 
   ngOnInit(): void {
